@@ -25,7 +25,7 @@ export const NavbarLinks = [
   },
 ];
 
-const DropdownLinks = [
+export const DropdownLinks = [
   {
     name: "Our Services",
     link: "/service",
@@ -105,16 +105,33 @@ const Navbar = ({ handleOrderPopup }) => {
                   </a>
                   <div className="absolute -left-9 z-[9999] hidden w-[150px] rounded-md bg-white p-2 text-black group-hover:block shadow-md ">
                     <ul className="space-y-3">
-                      {DropdownLinks.map((data) => (
-                        <li key={data.name}>
-                          <a
-                            className="inline-block w-full rounded-md p-2 hover:bg-#0287a8/20"
-                            href={data.link}
-                          >
-                            {data.name}
-                          </a>
-                        </li>
-                      ))}
+                      <li>
+                        <NavLink
+                          className="inline-block w-full rounded-md p-2 hover:bg-#0287a8/20"
+                          to="/service"
+                          activeClassName="active"
+                        >
+                          Our Services
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className="inline-block w-full rounded-md p-2 hover:bg-#0287a8/20"
+                          to="/top-brands"
+                          activeClassName="active"
+                        >
+                          Top Brands
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className="inline-block w-full rounded-md p-2 hover:bg-#0287a8/20"
+                          to="/location"
+                          activeClassName="active"
+                        >
+                          Location
+                        </NavLink>
+                      </li>
                     </ul>
                   </div>
                 </li>
