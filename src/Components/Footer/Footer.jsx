@@ -60,7 +60,7 @@ const Footer = () => {
               <br />
               <div className="flex items-center gap-3 ">
                 <FaLocationArrow />
-                <p>Noida, Uttar Pradesh</p>
+                <p>Surat,Gujarat</p>
               </div>
               <div className="flex items-center gap-3 mt-3">
                 <FaMobileAlt />
@@ -75,7 +75,7 @@ const Footer = () => {
                   <a href="#">
                     <FaFacebook className="text-3xl" />
                   </a>
-                  <a href="#">
+                  <a href="https://www.linkedin.com/in/chhaya-mishra-2a9410252/">
                     <FaLinkedin className="text-3xl" />
                   </a>
                 </div>

@@ -1,12 +1,19 @@
-import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const OrderPopup = ({ orderPopup, setOrderPopup }) => {
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleSearch = () => {
-    navigate("/booked");
+  const handleBooking = () => {
+    if (name.trim() === "") {
+      alert("Please enter your name before booking.");
+      return;
+    }
+    navigate("/booked", {
+      state: { name },
+    });
   };
 
   return (
@@ -32,6 +39,7 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
             {/* Body */}
             <div className="mt-4">
               <input
+                onChange={(e) => setName(e.target.value)}
                 type="text"
                 placeholder="Name"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
@@ -48,7 +56,7 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
               />
               <div className="flex justify-center">
                 <button
-                  onClick={handleSearch}
+                  onClick={handleBooking}
                   style={{
                     background: "linear-gradient(to right, #0287a8, #00c3c7)",
                   }}
