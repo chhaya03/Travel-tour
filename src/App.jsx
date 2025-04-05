@@ -13,6 +13,7 @@ import Location from "./Components/Location/Location";
 import ServicePage from "./Pages/ServicePage";
 import TopBrands from "./Pages/TopBrands";
 import Results from "./Components/Hero/Results";
+import Booked from "./Components/OrderPopup/Booked";
 
 const App = () => {
   React.useEffect(() => {
@@ -29,6 +30,10 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
+          {/* Route WITHOUT layout for booking confirmation */}
+          <Route path="/booked" element={<Booked />} />
+
+          {/* Everything else WITH Layout */}
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="blogs" element={<Blog />} />
@@ -39,7 +44,7 @@ const App = () => {
             <Route path="service" element={<ServicePage />} />
             <Route path="top-brands" element={<TopBrands />} />
             <Route path="location" element={<Location />} />
-            <Route path="/results" element={<Results />} />
+            <Route path="results" element={<Results />} />
           </Route>
         </Routes>
       </BrowserRouter>

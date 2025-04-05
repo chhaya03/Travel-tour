@@ -1,7 +1,14 @@
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const OrderPopup = ({ orderPopup, setOrderPopup }) => {
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate("/booked");
+  };
+
   return (
     <>
       {orderPopup && (
@@ -41,6 +48,7 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
               />
               <div className="flex justify-center">
                 <button
+                  onClick={handleSearch}
                   style={{
                     background: "linear-gradient(to right, #0287a8, #00c3c7)",
                   }}
