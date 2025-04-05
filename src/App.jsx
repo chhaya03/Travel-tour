@@ -12,6 +12,7 @@ import AOS from "aos";
 import Location from "./Components/Location/Location";
 import ServicePage from "./Pages/ServicePage";
 import TopBrands from "./Pages/TopBrands";
+import Results from "./Components/Hero/Results";
 
 const App = () => {
   React.useEffect(() => {
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="service" element={<ServicePage />} />
             <Route path="top-brands" element={<TopBrands />} />
             <Route path="location" element={<Location />} />
+            <Route path="/results" element={<Results />} />
           </Route>
         </Routes>
       </BrowserRouter>

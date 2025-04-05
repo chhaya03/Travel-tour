@@ -1,25 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Location = () => {
+  const [coords, setCoords] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCoords({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        alert("Please allow location access to see your map.");
+      }
+    );
+  }, []);
+
   return (
     <>
       <span id="location"></span>
       <section data-aos="fade-up" className="">
         <div className="container my-4">
           <h1 className="inline-block border-l-8 border-primary/50 py-2 pl-2 mb-4 text-xl font-bold sm:text-3xl">
-            Location to visit
+            Your Current Location
           </h1>
 
-          <div className="rounded-xl ">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7116.040113933064!2d83.97168138953894!3d26.90285855661167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39938d631905f7c1%3A0x189dbadf0b42da46!2sNew%20Mobile%20World!5e0!3m2!1sen!2sin!4v1700902186385!5m2!1sen!2sin"
-              width="100%"
-              height="360"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              style={{ borderRadius: "20px" }}
-            ></iframe>
+          <div className="rounded-xl">
+            {coords ? (
+              <iframe
+                src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=15&output=embed`}
+                width="100%"
+                height="360"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ borderRadius: "20px" }}
+              ></iframe>
+            ) : (
+              <div className="text-gray-600 p-4 bg-white rounded-md shadow-md">
+                Fetching your location...
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const cityOptions = [
   { value: "Dubai", label: "Dubai" },
@@ -13,6 +14,25 @@ const cityOptions = [
 const Hero = () => {
   const [priceValue, setPriceValue] = React.useState(30);
   const [selectedCity, setSelectedCity] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (!selectedCity) {
+      alert("Please select a city.");
+      return;
+    }
+    const date = document.getElementById("destination").value;
+    if (!date) {
+      alert("Please select a date.");
+      return;
+    }
+
+    // Navigate to results with search params
+    navigate(
+      `/results?city=${selectedCity.value}&date=${date}&price=${priceValue}`
+    );
+  };
 
   // Custom styles to remove internal borders
   const customStyles = {
@@ -106,6 +126,7 @@ const Hero = () => {
               </div>
             </div>
             <button
+              onClick={handleSearch}
               style={{
                 background: "linear-gradient(to right, #0287a8, #00c3c7)",
               }}
